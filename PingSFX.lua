@@ -8,6 +8,7 @@ Tool.Name = "Ping"
 Tool.Activated:Connect(function()
     local Ping = Instance.new("Sound", workspace)
     Ping.SoundId = "rbxassetid://7383525713"
+    Ping.Volume = 9e9
     Ping:Play()
     Ping.Ended:Connect(function()
         Ping:Destroy()
