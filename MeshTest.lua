@@ -1,8 +1,9 @@
 local part = Instance.new("Part")
 part.Size = Vector3.new(5, 6, 5)
-part.Position = Vector3.new(4500, 4500, 0)
+part.Position = Vector3.new(0, 5, 0)
 part.Anchored = true
-part.CanCollide = true
+part.CanCollide = false
+part.CanQuery = false
 part.CastShadow = false
 
 local highlight = Instance.new("Highlight", part)
@@ -16,22 +17,11 @@ mesh.MeshType = Enum.MeshType.FileMesh
 mesh.MeshId = "rbxassetid://12756704717"
 mesh.TextureId = "rbxassetid://60484593"
 mesh.Offset = Vector3.new(0, 0, 0)
-mesh.Scale = Vector3.new(0, 0, 0)
+mesh.Scale = Vector3.new(.1,.1,.1)
 mesh.VertexColor = Vector3.new(9e9, 9e9, 9e9)
 mesh.Parent = part
 part.Parent = workspace
 
-local function checkPartsInArea()
-    local region = Region3.new(part.Position - part.Size / 2, part.Position + part.Size / 2)
-    local partsInRegion = workspace:FindPartsInRegion3(region, nil, math.huge)
-    for _, foundPart in ipairs(partsInRegion) do
-        if foundPart ~= part then
-            print("Found part:", foundPart.Name)
-        end
-    end
-end
-
-while wait() do
-    mesh.Scale = mesh.Scale + Vector3.new(0.0675, 0.0675, 0.0675)
-    checkPartsInArea()
-end
+-- while wait() do
+--     mesh.Scale = mesh.Scale + Vector3.new(0.1, 0.1, 0.1)
+-- end
